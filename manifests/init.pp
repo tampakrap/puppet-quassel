@@ -7,20 +7,20 @@ class quassel (
   $service_enabled    = $quassel::params::service_enabled,
   $service_hasstatus  = $quassel::params::service_hasstatus,
   $service_hasrestart = $quassel::params::service_hasrestart,
+  $qt_packages        = $quassel::params::qt_packages,
   $qt_ensure          = $quassel::params::qt_ensure,
+  $config_path        = $quassel::params::config_path,
+  $loglevel           = $quassel::params::loglevel,
+  $listen             = $quassel::params::listen,
+  $port               = $quassel::params::port,
+  $user               = $quassel::params::user,
+  $group              = $quassel::params::group,
+  $configdir          = $quassel::params::configdir,
+  $logfile            = $quassel::params::logfile,
 ) inherits quassel::params {
 
-  portage::package { ['dev-qt/qtcore', 'dev-qt/qtscript', 'dev-qt/qtsql']:
-    ensure => $qt_ensure,
-  }
-
-  portage::package { $pkg_name:
-    ensure   => $ensure,
-    use      => $gentoo_use,
-    keywords => $gentoo_keywords,
-    target   => 'quassel',
-  }
-
+  include quassel::install
   include quassel::service
+  include quassel::config
 
 }

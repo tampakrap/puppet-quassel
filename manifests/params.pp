@@ -5,6 +5,12 @@ class quassel::params {
   $gentoo_keywords = undef
   $gentoo_use      = undef
   $service_enabled = true
+  $user            = 'quassel'
+  $group           = 'quassel'
+  $loglevel        = 'Info'
+  $listen          = '0.0.0.0'
+  $port            = '4242'
+  $logfile         = '/var/log/quassel.log'
 
   case $operatingsystem {
     'gentoo': {
@@ -12,6 +18,9 @@ class quassel::params {
       $service_name       = 'quasselcore'
       $service_hasstatus  = true
       $service_hasrestart = true
+      $qt_packages        = ['dev-qt/qtcore', 'dev-qt/qtscript', 'dev-qt/qtsql']
+      $config_path        = '/etc/conf.d/quassel'
+      $configdir          = '/var/lib/quassel'
     }
     default: { fail("Sorry, $operatingsystem is not supported") }
   }
