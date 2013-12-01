@@ -4,7 +4,7 @@ class quassel::config {
 
   file { 'quassel_config':
     path     => $quassel::config_path,
-    template => template("${module_name}/config.erb")
+    template => template("${module_name}/config.erb"),
     require  => Package['quassel'],
     notify   => Service['quassel'],
   }
