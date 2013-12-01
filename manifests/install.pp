@@ -26,7 +26,7 @@ class quassel::install {
     }
   }
 
-  package { 'quassel'
+  package { 'quassel':
     name   => $quassel::pkg_name,
     ensure => $quassel::ensure,
     notify => Service['quassel'],
