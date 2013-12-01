@@ -14,12 +14,12 @@ class quassel::params {
 
   case $operatingsystem {
     'gentoo': {
-      $pkg_name           = 'net-irc/drupal'
+      $pkg_name           = 'net-irc/quassel'
       $service_name       = 'quasselcore'
       $service_hasstatus  = true
       $service_hasrestart = true
       $qt_packages        = ['dev-qt/qtcore', 'dev-qt/qtscript', 'dev-qt/qtsql']
-      $config_path        = '/etc/conf.d/quassel'
+      $config_path        = '/etc/conf.d/quasselcore'
       $configdir          = '/var/lib/quassel'
     }
     default: { fail("Sorry, $operatingsystem is not supported") }
