@@ -10,7 +10,7 @@ class quassel::config {
   }
 
   file { $quassel::configdir:
-    user    => $quassel::user,
+    owner   => $quassel::user,
     group   => $quassel::group,
     mode    => 0750,
     require => Package['quassel'],
