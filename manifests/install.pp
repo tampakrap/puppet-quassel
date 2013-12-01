@@ -10,19 +10,24 @@ class quassel::install {
   }
 
   if $::osfamily == 'Gentoo' {
-    package_keywords { $quassel::pkg_name:
-      keywords => $quassel::gentoo_keywords,
-      target   => 'quassel',
-      before   => Package['quassel'],
+    if $quassel::gentoo_keywords {
+      package_keywords { $quassel::pkg_name:
+        keywords => $quassel::gentoo_keywords,
+        target   => 'quassel',
+        before   => Package['quassel'],
+      }
     }
-    package_use { $quassel::pkg_name:
-      use    => $quassel::gentoo_use,
-      target => 'quassel',
-      before => Package['quassel'],
+    if $quassel::gentoo_use {
+      package_use { $quassel::pkg_name:
+        use    => $quassel::gentoo_use,
+        target => 'quassel',
+        before => Package['quassel'],
+      }
     }
   }
 
-  package { $quassel::pkg_name:
+  package { 'quassel'
+    name   => $quassel::pkg_name,
     ensure => $quassel::ensure,
     notify => Service['quassel'],
   }
