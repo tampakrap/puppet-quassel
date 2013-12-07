@@ -7,7 +7,7 @@ class quassel::params {
   $service_enabled = true
   $user            = 'quassel'
   $group           = 'quassel'
-  $loglevel        = 'info'
+  $log_level        = 'Info'
   $listen          = '0.0.0.0'
   $port            = '4242'
   $logfile         = '/var/log/quassel.log'

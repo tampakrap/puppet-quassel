@@ -10,7 +10,7 @@ class quassel (
   $qt_packages        = $quassel::params::qt_packages,
   $qt_ensure          = $quassel::params::qt_ensure,
   $config_path        = $quassel::params::config_path,
-  $loglevel           = $quassel::params::loglevel,
+  $log_level           = $quassel::params::log_level,
   $listen             = $quassel::params::listen,
   $port               = $quassel::params::port,
   $user               = $quassel::params::user,
